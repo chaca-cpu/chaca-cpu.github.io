@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caca | Digital Space</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --accent: #3b82f6;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #1e293b;
+        }
+        .dark-mode {
+            --bg: #0b0f1a;
+            --card: #161e31;
+            --text: #f1f5f9;
+        }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.5s ease;
+            cursor: none; /* Menghilangkan kursor asli untuk custom cursor */
+        }
+
+        /* Custom Cursor */
+        #cursor-dot {
+            width: 8px; height: 8px; background: var(--accent);
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 999;
+        }
+        #cursor-outline {
+            width: 40px; height: 40px; border: 2px solid var(--accent);
+            border-radius: 50%; position: fixed; pointer-events: none; z-index: 998;
+            transition: transform 0.15s ease-out;
+        }
+
+        /* Sidebar Nav */
+        @media (min-width: 1024px) {
+            .nav-sidebar { 
+                width: 70px; position: fixed; left: 0; top: 0; height: 100vh; 
+                display: flex; flex-direction: column; align-items: center; padding: 40px 0;
+                background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px);
+                border-right: 1px solid rgba(255,255,255,0.1); z-index: 100;
+            }
+            .content-main { margin-left: 70px; }
+        }
+
+        @media (max-width: 1023px) {
+            .nav-sidebar {
+                position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+                width: 90%; height: 65px; background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(20px); border-radius: 24px;
+                display: flex; flex-direction: row; justify-content: space-around; align-items: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 100;
+            }
+            body { cursor: auto; } /* Kembalikan kursor di HP */
+            #cursor-dot, #cursor-outline { display: none; }
+        }
+
+        .glass-card {
+            background: var(--card); border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+        /* Experience Glow */
+        .exp-item { border-left: 2px solid rgba(59, 130, 246, 0.2); }
+        .exp-item:hover { border-left-color: var(--accent); }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.2, 1, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .bar-fill { transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1); }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="cursor-dot"></div>
+    <div id="cursor-outline"></div>
+
+    <nav class="nav-sidebar">
+        <div class="hidden lg:flex w-12 h-12 bg-blue-600 rounded-2xl items-center justify-center text-white mb-10 shadow-lg shadow-blue-500/30">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <div class="flex lg:flex-col gap-10 text-slate-400">
+            <a href="#home" class="hover:text-blue-500 transition-colors"><i data-lucide="home"></i></a>
+            <a href="#stats" class="hover:text-blue-500 transition-colors"><i data-lucide="activity"></i></a>
+            <a href="#work" class="hover:text-blue-500 transition-colors"><i data-lucide="compass"></i></a>
+            <button id="theme-toggle" class="hover:text-yellow-500 transition-colors"><i data-lucide="moon" id="theme-icon"></i></button>
+        </div>
+    </nav>
+
+    <div class="content-main">
+        <main class="max-w-6xl mx-auto px-6 py-12 lg:py-20">
+            
+            <section id="home" class="flex flex-col lg:flex-row items-center gap-16 mb-40 reveal">
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-[52px] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="profile.jpg" alt="Caca Eka" 
+                         class="relative w-48 h-48 lg:w-64 lg:h-64 rounded-[48px] object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <div class="text-center lg:text-left">
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 mb-6">
+                        <span class="px-4 py-1 bg-blue-500/10 text-blue-500 text-[10px] font-bold uppercase tracking-[0.2em] rounded-full">Yogyakarta, ID</span>
+                        <span id="local-time" class="text-slate-400 text-[10px] font-bold tabular-nums"></span>
+                        <span class="text-slate-300">|</span>
+                        <span class="text-slate-400 text-[10px] font-bold uppercase tracking-widest">Awan Cerah 28°C</span>
+                    </div>
+                    <h1 class="text-7xl lg:text-9xl font-extrabold tracking-tighter mb-8 leading-[0.85]">Chacha.</h1>
+                    <p class="text-slate-500 text-xl lg:text-2xl font-light leading-relaxed max-w-xl">
+                        Network Tech & Analisa Pasar. Menyeimbangkan logika sistem dengan estetika digital.
+                    </p>
+                </div>
+            </section>
+
+            <div id="stats" class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-40">
+                <div class="lg:col-span-4 glass-card p-10 flex flex-col justify-between reveal">
+                    <div class="space-y-10">
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-2">Education</p>
+                            <p class="text-2xl font-semibold tracking-tight">SMKN 1 Seyegan</p>
+                            <p class="text-xs text-slate-400 mt-1 font-medium">Teknik Komputer Jaringan</p>
+                        </div>
+                        <div class="h-px bg-slate-200/50"></div>
+                        <div>
+                            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-500 mb-2">Based In</p>
+                            <p class="text-2xl font-semibold tracking-tight">D.I. Yogyakarta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-8 glass-card p-10 reveal">
+                    <div class="flex justify-between items-center mb-12">
+                        <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-slate-400">Skill Matrix</h3>
+                        <div class="flex gap-1">
+                            <div class="w-2 h-2 rounded-full bg-blue-500"></div>
+                            <div class="w-2 h-2 rounded-full bg-blue-300"></div>
+                            <div class="w-2 h-2 rounded-full bg-blue-100"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                        <div>
+                            <div class="flex justify-between mb-3 text-[10px] font-black"><span>HTML / MARKUP</span><span>90%</span></div>
+                            <div class="h-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 bar-fill" data-width="90%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-3 text-[10px] font-black"><span>CSS / STYLING</span><span>75%</span></div>
+                            <div class="h-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 bar-fill" data-width="75%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-3 text-[10px] font-black"><span>PHP / SERVER</span><span>60%</span></div>
+                            <div class="h-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 bar-fill" data-width="60%"></div></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-3 text-[10px] font-black"><span>JS / LOGIC</span><span>40%</span></div>
+                            <div class="h-1 bg-slate-100 rounded-full overflow-hidden"><div class="h-full bg-blue-600 bar-fill" data-width="40%"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section id="work" class="mb-40">
+                <div class="max-w-3xl mx-auto">
+                    <div class="flex items-center gap-4 mb-16 reveal">
+                        <h2 class="text-4xl font-bold tracking-tight">Experience</h2>
+                        <div class="h-px flex-grow bg-slate-200/50"></div>
+                    </div>
+
+                    <div class="space-y-12">
+                        <div class="exp-item pl-8 reveal">
+                            <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Current</span>
+                            <h4 class="text-2xl font-bold mt-1">Teknisi WiFi</h4>
+                            <p class="text-slate-500 mt-3 font-light leading-relaxed">Instalasi infrastruktur nirkabel, maintenance sistem jaringan, dan konfigurasi optimasi AP.</p>
+                        </div>
+
+                        <div class="exp-item pl-8 reveal">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Development</span>
+                            <h4 class="text-2xl font-bold mt-1">Web Developer Junior</h4>
+                            <p class="text-slate-500 mt-3 font-light leading-relaxed">Mendevelop aplikasi web fungsional menggunakan arsitektur PHP dan Tailwind CSS.</p>
+                        </div>
+
+                        <div class="exp-item pl-8 reveal">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Service</span>
+                            <h4 class="text-2xl font-bold mt-1">Waiters Kedai</h4>
+                            <p class="text-slate-500 mt-3 font-light leading-relaxed">Manajemen pelayanan konsumen dan koordinasi operasional tim dalam intensitas tinggi.</p>
+                        </div>
+
+                        <div class="exp-item pl-8 reveal">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Finance</span>
+                            <h4 class="text-2xl font-bold mt-1">Trader Crypto & Saham</h4>
+                            <p class="text-slate-500 mt-3 font-light leading-relaxed">Analisis teknikal pasar modal dan manajemen risiko portofolio aset digital.</p>
+                        </div>
+
+                        <div class="exp-item pl-8 reveal">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Automation</span>
+                            <h4 class="text-2xl font-bold mt-1">Bot WhatsApp Developer</h4>
+                            <p class="text-slate-500 mt-3 font-light leading-relaxed">Membangun skrip otomasi berbasis JavaScript untuk efisiensi alur pesan digital.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="glass-card p-12 lg:p-20 text-center reveal bg-blue-600 text-white border-none overflow-hidden relative">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
+                <div class="relative z-10">
+                    <h2 class="text-4xl lg:text-7xl font-extrabold mb-10 tracking-tighter">Ready to connect?</h2>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="mailto:cacaeka.eka08@gmail.com" class="px-10 py-4 bg-white text-blue-600 rounded-full font-bold text-xs uppercase tracking-widest hover:scale-110 transition-transform">Email Me</a>
+                        <a href="https://wa.me/62857312617287" class="px-10 py-4 bg-blue-700 text-white rounded-full font-bold text-xs uppercase tracking-widest hover:scale-110 transition-transform">WhatsApp</a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Custom Cursor Logic
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+            outline.animate({
+                left: e.clientX - 20 + 'px',
+                top: e.clientY - 20 + 'px'
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Scroll Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if(e.isIntersecting) {
+                    e.target.classList.add('active');
+                    if(e.target.id === 'stats') {
+                        e.target.querySelectorAll('.bar-fill').forEach(b => b.style.width = b.dataset.width);
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+        // Clock
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('local-time').innerText = now.toLocaleTimeString('id-ID', { hour12: false, hour: '2-digit', minute: '2-digit' }) + ' JOGJA';
+        }
+        setInterval(updateTime, 1000); updateTime();
+
+        // Theme Toggle
+        const themeBtn = document.getElementById('theme-toggle');
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.getElementById('theme-icon');
+            icon.setAttribute('data-lucide', document.body.classList.contains('dark-mode') ? 'sun' : 'moon');
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>

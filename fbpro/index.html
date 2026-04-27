@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mastery FB Pro - Panduan Lengkap 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>E-Learning FB Pro Mastery 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0066FF;
@@ -18,41 +18,39 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background-color: var(--bg-body); color: var(--text-dark); overflow-x: hidden; }
 
-        /* --- HALAMAN DEPAN (PROMOSI) --- */
+        /* --- HALAMAN PROMOSI --- */
         #page-login {
             position: fixed; inset: 0; z-index: 1000;
             background: white; display: flex; align-items: center; justify-content: center; padding: 20px;
         }
-        .hero-promo { max-width: 500px; text-align: center; }
-        .hero-promo h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.2rem; color: var(--primary); margin-bottom: 15px; }
-        .hero-promo p { color: var(--text-gray); margin-bottom: 30px; font-size: 1.1rem; }
-        .input-group { background: #F4F7FE; padding: 30px; border-radius: 24px; }
+        .hero-promo { max-width: 550px; text-align: center; }
+        .hero-promo h1 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; font-weight: 800; }
+        .hero-promo p { color: var(--text-gray); margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6; }
+        .input-group { background: #F4F7FE; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         input[type="password"] {
-            width: 100%; padding: 15px; border: 2px solid #E0E5F2; border-radius: 12px;
-            font-size: 18px; text-align: center; margin-bottom: 15px; outline: none;
+            width: 100%; padding: 18px; border: 2px solid #E0E5F2; border-radius: 15px;
+            font-size: 18px; text-align: center; margin-bottom: 20px; outline: none; transition: 0.3s;
         }
+        input[type="password"]:focus { border-color: var(--primary); background: white; }
         .btn-login {
-            width: 100%; padding: 15px; border-radius: 12px; border: none;
+            width: 100%; padding: 18px; border-radius: 15px; border: none;
             background: var(--primary); color: white; font-weight: 700; cursor: pointer; font-size: 16px;
-            transition: 0.2s;
+            box-shadow: 0 10px 20px rgba(0, 102, 255, 0.2);
         }
-        .btn-login:hover { background: #0052cc; }
 
-        /* --- LAYOUT UTAMA --- */
+        /* --- DASHBOARD --- */
         #app-container { display: none; min-height: 100vh; }
 
-        /* SIDEBAR */
         aside {
             width: 280px; background: var(--sidebar-white); height: 100vh;
             position: fixed; left: 0; top: 0; transition: var(--transition);
             border-right: 1px solid #E0E5F2; z-index: 500; overflow-y: auto;
         }
         aside.closed { transform: translateX(-100%); }
-        
-        .sidebar-brand { padding: 30px; border-bottom: 1px solid #F4F7FE; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--primary); font-size: 1.2rem; }
+        .sidebar-brand { padding: 30px; border-bottom: 1px solid #F4F7FE; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: var(--primary); font-size: 1.2rem; text-align: center; }
         
         .menu-list { padding: 20px; }
-        .menu-cat { font-size: 11px; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin: 20px 0 10px 10px; }
+        .menu-cat { font-size: 11px; font-weight: 700; color: var(--text-gray); text-transform: uppercase; margin: 25px 0 10px 10px; letter-spacing: 1px; }
         .menu-item {
             padding: 14px 15px; border-radius: 12px; cursor: pointer;
             display: flex; align-items: center; gap: 12px; color: var(--text-gray);
@@ -61,45 +59,35 @@
         .menu-item:hover { background: #F4F7FE; color: var(--primary); }
         .menu-item.active { background: var(--primary); color: white; box-shadow: 0 10px 20px rgba(0, 102, 255, 0.15); }
 
-        /* MAIN CONTENT */
-        main { flex: 1; margin-left: 280px; transition: var(--transition); min-height: 100vh; display: flex; flex-direction: column; }
+        main { flex: 1; margin-left: 280px; transition: var(--transition); min-height: 100vh; }
         main.expanded { margin-left: 0; }
 
         .top-bar {
-            padding: 20px 40px; display: flex; align-items: center; gap: 20px;
-            position: sticky; top: 0; background: rgba(244, 247, 254, 0.9); backdrop-filter: blur(10px); z-index: 400;
+            padding: 20px 40px; display: flex; align-items: center; justify-content: space-between;
+            position: sticky; top: 0; background: rgba(244, 247, 254, 0.9); backdrop-filter: blur(10px); z-index: 400; border-bottom: 1px solid #E0E5F2;
         }
-        .btn-toggle {
-            background: white; border: 1px solid #E0E5F2; padding: 10px 15px; border-radius: 10px; cursor: pointer;
-            font-weight: bold; color: var(--primary); font-size: 1rem;
-        }
+        .btn-toggle { background: white; border: 1px solid #E0E5F2; padding: 10px 15px; border-radius: 10px; cursor: pointer; color: var(--primary); font-weight: bold; }
 
-        .content-body { padding: 20px 40px 40px; max-width: 1000px; width: 100%; align-self: center; }
-        .card { background: white; padding: 40px; border-radius: 24px; box-shadow: 0 4px 25px rgba(0,0,0,0.03); border: 1px solid #E0E5F2; }
+        .content-body { padding: 40px; max-width: 1000px; margin: 0 auto; }
+        .card { background: white; padding: 45px; border-radius: 30px; border: 1px solid #E0E5F2; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         
-        h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.8rem; margin-bottom: 25px; color: var(--text-dark); border-left: 5px solid var(--primary); padding-left: 15px; }
-        .materi-box { margin-bottom: 20px; }
-        .materi-title { 
-            display: flex; align-items: center; gap: 10px; font-weight: 700; 
-            color: var(--primary); margin-bottom: 10px; font-size: 1.1rem;
-        }
-        .materi-text { color: #4D5E80; line-height: 1.8; margin-bottom: 15px; font-size: 1rem; }
+        h2 { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; margin-bottom: 30px; color: var(--text-dark); border-left: 6px solid var(--primary); padding-left: 20px; line-height: 1.2; }
+        .materi-item { margin-bottom: 35px; }
+        .materi-item h3 { font-size: 1.2rem; color: var(--primary); margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; }
+        .materi-item p { color: #4D5E80; line-height: 1.8; font-size: 1.05rem; }
+        .badge-step { background: var(--primary); color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 6px; flex-shrink: 0; margin-top: 4px; }
 
-        /* GRID UNTUK 50 TIPS */
-        .tips-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
-        .tip-card-simple { 
-            background: #F4F7FE; padding: 15px 20px; border-radius: 12px; 
-            display: flex; gap: 15px; align-items: center; transition: 0.2s;
-        }
-        .tip-card-simple:hover { background: #E0E5F2; transform: translateX(5px); }
-        .tip-number { background: var(--primary); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; flex-shrink: 0; }
+        .tips-grid { display: grid; gap: 12px; margin-top: 20px; }
+        .tip-card-simple { background: #F4F7FE; padding: 18px 25px; border-radius: 15px; display: flex; gap: 18px; align-items: center; border: 1px solid transparent; transition: 0.3s; }
+        .tip-card-simple:hover { border-color: var(--primary); background: white; transform: translateX(10px); }
+        .tip-number { background: var(--primary); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; flex-shrink: 0; }
 
-        /* --- MOBILE RESPONSIVE --- */
         @media (max-width: 768px) {
             aside { width: 100%; }
             main { margin-left: 0; }
-            .content-body { padding: 15px; }
-            .card { padding: 25px; }
+            .content-body { padding: 20px; }
+            .card { padding: 30px 20px; }
+            h2 { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -107,117 +95,116 @@
 
     <div id="page-login">
         <div class="hero-promo">
-            <div style="font-size: 50px; margin-bottom: 10px;">📈</div>
-            <h1>FB Pro Mastery 2026</h1>
-            <p>Dapatkan akses ke 200+ materi rahasia dan 50 strategi kilat gajian dari Facebook Profesional.</p>
+            <div style="font-size: 60px; margin-bottom: 20px;">🚀</div>
+            <h1>FB PRO MASTERY 2026</h1>
+            <p>Satu-satunya panduan yang Bapak/Ibu butuhkan untuk merubah akun Facebook biasa menjadi mesin penghasil Dollar.</p>
             <div class="input-group">
-                <input type="password" id="sandi" placeholder="Masukkan Kode Akses">
-                <button class="btn-login" onclick="bukaData()">MASUK KE MEMBER AREA</button>
+                <input type="password" id="sandi" placeholder="Masukkan Kode Lisensi">
+                <button class="btn-login" onclick="bukaDashboard()">MASUK KE AREA BELAJAR</button>
             </div>
-            <p style="margin-top: 20px; font-size: 12px; color: #A3AED0;">Akses ini bersifat pribadi dan permanen.</p>
         </div>
     </div>
 
     <div id="app-container">
         <aside id="mySidebar">
-            <div class="sidebar-brand">DASHBOARD VIP</div>
+            <div class="sidebar-brand">MASTER CLASS</div>
             <div class="menu-list">
-                <div class="menu-cat">Materi Utama</div>
-                <div id="m-inti" class="menu-item active" onclick="ganti('inti')">🏠 Panduan Dasar</div>
-                <div id="m-konten" class="menu-item" onclick="ganti('konten')">🎥 Strategi Konten</div>
+                <div class="menu-cat">KURIKULUM DASAR</div>
+                <div id="m-inti" class="menu-item active" onclick="nav('inti')">🏠 Dasar & Tugas Level</div>
+                <div id="m-konten" class="menu-item" onclick="nav('konten')">🎥 Strategi Konten Kreator</div>
                 
-                <div class="menu-cat">Keamanan & Gaji</div>
-                <div id="m-aman" class="menu-item" onclick="ganti('aman')">🛡️ Anti Banned</div>
-                <div id="m-gaji" class="menu-item" onclick="ganti('gaji')">🏦 Sistem Payout</div>
+                <div class="menu-cat">KEAMANAN & GAJI</div>
+                <div id="m-aman" class="menu-item" onclick="nav('aman')">🛡️ Proteksi & Anti Banned</div>
+                <div id="m-gaji" class="menu-item" onclick="nav('gaji')">🏦 Pengaturan Gaji (Payout)</div>
                 
-                <div class="menu-cat">Eksklusif</div>
-                <div id="m-tips" class="menu-item" onclick="ganti('tips')">💎 50 Tips Kilat</div>
+                <div class="menu-cat">WEAPON RAHASIA</div>
+                <div id="m-tips" class="menu-item" onclick="nav('tips')">💎 50 Tips Cuan Kilat</div>
             </div>
         </aside>
 
         <main id="myMain">
             <div class="top-bar">
-                <button class="btn-toggle" onclick="toggleSidebar()">☰ Menu Navigasi</button>
+                <button class="btn-toggle" onclick="toggleSide()">☰ MENU</button>
+                <div style="font-weight: 700; color: var(--text-gray); font-size: 0.9rem;">VIP MEMBER AREA</div>
             </div>
-
             <div class="content-body">
-                <div class="card" id="render-materi">
-                    </div>
+                <div class="card" id="render"></div>
             </div>
         </main>
     </div>
 
     <script>
-        const passKey = "MTIz"; // Sandi: 123
+        const pass = "MTIz"; // 123
 
-        function bukaData() {
-            const val = document.getElementById('sandi').value;
-            if(btoa(val) === passKey) {
+        function bukaDashboard() {
+            if(btoa(document.getElementById('sandi').value) === pass) {
                 document.getElementById('page-login').style.display = 'none';
                 document.getElementById('app-container').style.display = 'flex';
-                ganti('inti');
-            } else { alert("Maaf, Kode Akses Salah!"); }
+                nav('inti');
+            } else { alert("Kode lisensi salah!"); }
         }
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('mySidebar');
-            const main = document.getElementById('myMain');
-            sidebar.classList.toggle('closed');
-            main.classList.toggle('expanded');
+        function toggleSide() {
+            document.getElementById('mySidebar').classList.toggle('closed');
+            document.getElementById('myMain').classList.toggle('expanded');
         }
 
-        const database = {
+        const dataMateri = {
             inti: `
-                <h2>Panduan Dasar FB Pro</h2>
-                <div class="materi-box">
-                    <div class="materi-title">Langkah 1: Nama Akun Sesuai KTP</div>
-                    <div class="materi-text">Bapak/Ibu, pastikan nama di profil Facebook sama dengan kartu identitas. Ini sangat penting agar proses verifikasi saat gajian (payout) berjalan mulus tanpa ditolak sistem.</div>
-                    
-                    <div class="materi-title">Langkah 2: Mengaktifkan Mode Profesional</div>
-                    <div class="materi-text">Buka profil Anda, klik tanda titik tiga (...), lalu pilih "Aktifkan Mode Profesional". Pastikan profil tidak dalam kondisi terkunci (Locked) agar jangkauan video Bapak/Ibu bisa luas.</div>
-
-                    <div class="materi-title">Langkah 3: Setting Kategori Kreator</div>
-                    <div class="materi-text">Pilih kategori "Kreator Digital" agar Facebook merekomendasikan video Bapak/Ibu kepada orang-orang yang tepat secara otomatis.</div>
-                </div>
+                <h2>Panduan Dasar & Tugas Leveling</h2>
+                <div class="materi-item"><h3><span class="badge-step">1</span> Nama Identitas Resmi</h3><p>Wajib menggunakan nama sesuai KTP. Facebook adalah perusahaan keuangan saat membayar Anda, jadi data harus valid untuk verifikasi perbankan.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">2</span> Aktivasi Mode Profesional</h3><p>Pastikan fitur ini aktif melalui menu titik tiga di profil. Jika tidak aktif, Anda tidak akan memiliki Dashboard Profesional.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">3</span> Membuka Gembok Profil</h3><p>Akun yang dikunci (Locked Profile) tidak bisa menghasilkan uang. Pastikan profil terbuka untuk publik agar iklan bisa ditayangkan.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">4</span> Kategori Kreator Digital</h3><p>Pilih kategori ini untuk optimasi algoritma yang lebih luas. Ini membantu video Bapak/Ibu masuk ke beranda orang yang belum dikenal.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">5</span> Memahami Level 1</h3><p>Level 1 berfokus pada kelengkapan data. Bapak/Ibu harus mengisi Bio, Foto Profil, dan Foto Sampul secara lengkap.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">6</span> Memahami Level 2</h3><p>Di sini Facebook meminta Bapak/Ibu mulai berinteraksi. Gunakan fitur "Pusat Inspirasi" untuk melihat apa yang sedang viral.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">7</span> Memahami Level 3</h3><p>Level tertinggi untuk pemula. Fokusnya adalah mencapai 1.000 pengikut dan jumlah menit tonton tertentu melalui Reels.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">8</span> Tugas Interaksi Harian</h3><p>Selesaikan tugas "Balas Komentar" yang muncul di dashboard. Ini adalah cara Facebook menguji seberapa peduli Anda pada pengikut.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">9</span> Menggunakan Fitur Pencapaian</h3><p>Kumpulkan badge pencapaian (seperti 1K tontonan). Semakin banyak badge, semakin dipercaya akun Bapak/Ibu oleh sistem.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">10</span> Konsistensi Postingan Dasar</h3><p>Jangan biarkan akun kosong lebih dari 3 hari. Tugas dasar kreator adalah menjaga keaktifan akun agar jangkauan tidak turun.</p></div>
             `,
             konten: `
-                <h2>Rahasia Konten Viral</h2>
-                <div class="materi-box">
-                    <div class="materi-title">Teknik Hook 3 Detik</div>
-                    <div class="materi-text">Dalam video pendek (Reels), penonton sangat cepat berpindah. Gunakan 3 detik pertama untuk menampilkan hasil akhir atau judul yang besar agar orang berhenti menscroll.</div>
-                    
-                    <div class="materi-title">Pencahayaan & Suara</div>
-                    <div class="materi-text">Selalu ambil video di tempat terang (menghadap cahaya matahari). Bersihkan lensa kamera HP Bapak/Ibu agar gambar jernih dan suara terdengar mantap.</div>
-                </div>
+                <h2>10 Strategi Konten Kreator Pro</h2>
+                <div class="materi-item"><h3><span class="badge-step">1</span> Teknik Hook 3 Detik</h3><p>Tampilkan visual yang menarik atau tulisan pertanyaan yang memancing rasa penasaran tepat di detik pertama video.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">2</span> Audio Jernih & Asli</h3><p>Gunakan suara Bapak/Ibu sendiri. Penonton Facebook lebih menyukai konten yang terasa "nyata" dan tidak kaku.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">3</span> Pencahayaan Golden Hour</h3><p>Syutinglah di pagi hari atau dekat jendela. Cahaya yang bagus secara otomatis meningkatkan kualitas video Anda tanpa perlu kamera mahal.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">4</span> Caption SEO Friendly</h3><p>Gunakan kata kunci di deskripsi. Misal: "Tips memasak ayam geprek". Ini membantu video muncul saat orang mencari di kolom pencarian.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">5</span> Durasi Reels Ideal</h3><p>Untuk pemula, durasi 12-15 detik sangat efektif karena kemungkinan video ditonton sampai habis (loop) sangat tinggi.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">6</span> Penggunaan Hashtag Efektif</h3><p>Gunakan 3-5 hashtag saja yang sangat relevan. Jangan gunakan terlalu banyak karena dianggap spam oleh Facebook.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">7</span> Fokus pada Satu Niche</h3><p>Jika Bapak/Ibu suka masak, bahaslah masak terus-menerus. Algoritma akan lebih mudah mengenali target penonton Anda.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">8</span> Interaksi dengan Fans</h3><p>Sering-seringlah bertanya di dalam video, misal: "Kalau di daerah Bapak/Ibu, ini namanya apa?". Ini memicu kolom komentar penuh.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">9</span> Editing Minimalis</h3><p>Tidak perlu edit yang ribet. Cukup potong bagian yang tidak penting dan tambahkan teks penjelasan yang mudah dibaca.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">10</span> Jadwal Posting Rutin</h3><p>Temukan waktu di mana pengikut Anda aktif (cek di insight). Biasanya jam 12 siang dan jam 7 malam adalah waktu terbaik.</p></div>
             `,
             aman: `
-                <h2>Keamanan & Anti Banned</h2>
-                <div class="materi-box">
-                    <div class="materi-title">Dilarang Keras Re-upload</div>
-                    <div class="materi-text">Jangan pernah mengambil video dari TikTok, YouTube, atau orang lain. Gunakan video asli buatan Bapak/Ibu sendiri agar akun tidak terkena hukuman "Konten Tidak Asli".</div>
-                    
-                    <div class="materi-title">Cek Kotak Masuk Dukungan</div>
-                    <div class="materi-text">Secara berkala cek menu bantuan untuk melihat apakah ada laporan pelanggaran. Jika ada, segera hapus video tersebut untuk menyelamatkan akun Bapak/Ibu.</div>
-                </div>
+                <h2>10 Hukum Keamanan Akun</h2>
+                <div class="materi-item"><h3><span class="badge-step">1</span> Anti Re-upload</h3><p>Jangan pernah mengambil video dari TikTok atau YouTube orang lain. Satu video curian bisa merusak seluruh akun Anda.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">2</span> Bersihkan Watermark</h3><p>Jangan ada logo aplikasi lain di video Anda. Facebook akan mendeteksi dan membatasi jangkauan video tersebut.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">3</span> Cek Kotak Masuk Dukungan</h3><p>Periksa setiap minggu apakah ada video yang terkena klaim musik. Segera hapus jika ada agar akun tetap sehat (Hijau).</p></div>
+                <div class="materi-item"><h3><span class="badge-step">4</span> Autentikasi 2 Faktor</h3><p>Wajib diaktifkan agar akun tidak dibajak. Jika akun hilang, semua Dollar yang sudah dikumpulkan juga akan hilang.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">5</span> Hindari Kata Sensitif</h3><p>Jangan menggunakan kata-kata kasar atau ujaran kebencian di caption maupun di dalam video.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">6</span> Jangan Membeli Follower</h3><p>Follower bot akan membuat jangkauan akun Bapak/Ibu mati total. Lebih baik sedikit pengikut tapi asli.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">7</span> Bijak Berbagi Ke Grup</h3><p>Jangan share video sendiri ke terlalu banyak grup dalam waktu singkat. Akun bisa dianggap melakukan spam (KTA).</p></div>
+                <div class="materi-item"><h3><span class="badge-step">8</span> Verifikasi Identitas (ID)</h3><p>Jika diminta unggah foto KTP oleh Facebook, segera lakukan agar fitur monetisasi tidak dinonaktifkan.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">9</span> Update Aplikasi Berkala</h3><p>Selalu gunakan aplikasi Facebook versi terbaru untuk mendapatkan fitur keamanan dan filter terbaru.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">10</span> Lapor Bug Resmi</h3><p>Jika ada masalah teknis, gunakan menu "Laporkan Masalah" secara resmi, jangan melalui pihak ketiga yang tidak jelas.</p></div>
             `,
             gaji: `
-                <h2>Sistem Pembayaran (Gaji)</h2>
-                <div class="materi-box">
-                    <div class="materi-title">Syarat Payout Minimal</div>
-                    <div class="materi-text">Uang akan dikirim ke rekening bank Bapak/Ibu jika sudah mencapai minimal saldo $100 (Sekitar Rp 1,5 Juta). Jika belum sampai, uang tidak akan hangus tapi disimpan untuk bulan depan.</div>
-                    
-                    <div class="materi-title">Pajak (W-8BEN)</div>
-                    <div class="materi-text">Bapak/Ibu wajib mengisi formulir pajak. Jika tidak memiliki NPWP, gunakan nomor NIK KTP Anda sebagai nomor TIN pajak.</div>
-                </div>
-            `,
-            tips: `
-                <h2>50 Tips Strategi Kilat</h2>
-                <div class="tips-grid" id="tips-container">
-                    </div>
+                <h2>10 Langkah Pengaturan Gaji</h2>
+                <div class="materi-item"><h3><span class="badge-step">1</span> Pengisian Nama Payout</h3><p>Nama harus 100% sama dengan di Bank. Salah satu huruf saja bisa membuat transferan gagal.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">2</span> Alamat & Kode Pos</h3><p>Gunakan alamat tempat tinggal sekarang yang valid sesuai dokumen pendukung jika nanti diminta verifikasi.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">3</span> Penggunaan Nomor TIN (Pajak)</h3><p>Bapak/Ibu bisa mengisi kolom TIN dengan nomor NPWP. Jika tidak ada, gunakan nomor NIK yang tertera di KTP.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">4</span> Pemilihan Bank Lokal</h3><p>Gunakan bank besar yang sudah biasa menerima transfer luar negeri agar prosesnya lebih cepat.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">5</span> Kode SWIFT Bank</h3><p>Cari kode SWIFT bank Anda di Google. Ini adalah kode unik agar uang dari Amerika bisa sampai ke bank Bapak/Ibu.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">6</span> Formulir Pajak W-8BEN</h3><p>Tanda tangani formulir ini secara digital di dalam menu Facebook agar Anda tidak terkena potongan pajak ganda.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">7</span> Ambang Batas $100</h3><p>Uang baru akan dikirim jika saldo sudah mencapai minimal 100 Dollar. Jika belum, saldo akan terus terakumulasi.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">8</span> Jadwal Transfer</h3><p>Biasanya Facebook mengirimkan gaji setiap tanggal 21 sampai 23 setiap bulannya.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">9</span> Notifikasi Email</h3><p>Selalu cek email saat tanggal gajian. Facebook akan mengirimkan bukti transfer (Invoice) ke email Bapak/Ibu.</p></div>
+                <div class="materi-item"><h3><span class="badge-step">10</span> Penarikan Lewat PayPal</h3><p>Jika tidak ingin lewat Bank, Bapak/Ibu bisa menggunakan PayPal sebagai alternatif, namun biasanya potongannya lebih besar.</p></div>
             `
         };
 
-        const listTips = [
+        const tips50 = [
             "Gunakan nama asli sesuai KTP untuk mempermudah pencairan uang.",
             "Aktifkan Mode Profesional sebelum mengunggah video pertama.",
             "Pastikan Profil tidak dikunci agar iklan bisa masuk.",
@@ -225,33 +212,33 @@
             "Atur semua postingan ke publik (jangan hanya teman).",
             "Gunakan foto profil wajah asli yang jelas dan tersenyum.",
             "Hubungkan akun dengan WhatsApp agar pengikut mudah menghubungi.",
-            "Hapus postingan lama yang mengandung musik berhak cipta (Copyright).",
+            "Hapus postingan lama yang mengandung musik berhak cipta.",
             "Jangan pernah melakukan re-upload video milik orang lain.",
             "Fokus pada satu topik konten (niche) agar pengikut loyal.",
             "Unggah minimal 1 video Reels setiap hari secara rutin.",
-            "Perhatikan 3 detik pertama video untuk menarik perhatian (Hook).",
+            "Perhatikan 3 detik pertama video untuk menarik perhatian.",
             "Gunakan teks tulisan di tengah layar video agar menarik.",
             "Pastikan pencahayaan saat syuting terang (menghadap jendela).",
             "Gunakan suara asli Bapak/Ibu, bukan suara robot.",
-            "Pakai musik yang sedang trending (tanda panah naik di FB).",
+            "Pakai musik yang sedang trending (tanda panah naik).",
             "Balas komentar penonton minimal 15 menit setelah posting.",
             "Jangan ajak orang 'Follow Balik' secara terang-terangan.",
-            "Gunakan hashtag yang relevan (maksimal 3-5 hashtag saja).",
+            "Gunakan hashtag yang relevan (maksimal 3-5 saja).",
             "Perhatikan kualitas video minimal HD (1080p).",
-            "Hindari watermark aplikasi lain (seperti logo TikTok).",
-            "Gunakan fitur 'Balas Komentar dengan Video' untuk interaksi tinggi.",
+            "Hindari watermark aplikasi lain di dalam video.",
+            "Gunakan fitur 'Balas Komentar dengan Video'.",
             "Posting di jam istirahat orang Indonesia (12:00 atau 19:00).",
             "Tulis deskripsi video yang membuat orang ingin berkomentar.",
-            "Buat video durasi pendek (7-15 detik) untuk mengejar pengikut.",
+            "Buat video pendek (7-15 detik) untuk mengejar pengikut.",
             "Buat video panjang (3 menit+) untuk mengejar Dollar besar.",
             "Rutin cek 'Dashboard Profesional' untuk melihat perkembangan.",
             "Segera hapus video jika mendapat peringatan pelanggaran.",
             "Lakukan siaran langsung (Live) minimal seminggu sekali.",
-            "Jangan bagikan video sendiri ke grup secara berlebihan (Spam).",
+            "Jangan bagikan video sendiri ke grup secara berlebihan.",
             "Gunakan 'Thumbnail' yang menarik di video panjang.",
-            "Pantau statistik 'Jangkauan' untuk tahu video mana yang disukai.",
+            "Pantau statistik 'Jangkauan' secara berkala.",
             "Pelajari cara mengisi data pajak W-8BEN dengan benar.",
-            "Pastikan nomor rekening Bank sudah mendukung kiriman internasional.",
+            "Pastikan rekening Bank sudah mendukung kiriman internasional.",
             "Cek SWIFT CODE bank Anda sebelum mendaftarkan payout.",
             "Jangan klik link mencurigakan yang mengaku dari Facebook.",
             "Aktifkan Autentikasi Dua Faktor (2FA) agar akun aman.",
@@ -259,44 +246,33 @@
             "Gunakan tripod agar video tidak goyang (stabil).",
             "Berikan sapaan khas di setiap video agar mudah diingat.",
             "Jangan berdebat dengan penonton yang berkomentar negatif.",
-            "Gunakan teknik 'bercerita' (Storytelling) dalam setiap konten.",
+            "Gunakan teknik 'bercerita' (Storytelling) dalam konten.",
             "Lap lensa kamera HP sebelum mulai merekam video.",
-            "Perhatikan volume suara latar agar tidak menutupi suara bicara.",
-            "Mintalah penonton mengikuti (Follow) di akhir video secara sopan.",
-            "Gunakan fitur 'Rekomendasi Profil' untuk memantau kesehatan akun.",
+            "Perhatikan volume suara latar agar tidak menutupi suara.",
+            "Mintalah penonton mengikuti (Follow) di akhir video.",
+            "Gunakan fitur 'Rekomendasi Profil' untuk cek kesehatan akun.",
             "Jangan menyerah jika video awal masih sepi penonton.",
             "Belajar dari kreator lain yang sudah sukses gajian.",
-            "Jaga kesehatan mata, jangan terlalu lama menatap layar HP.",
-            "Berdoa dan luruskan niat untuk berbagi manfaat kepada sesama."
+            "Jaga kesehatan mata, jangan terlalu lama menatap layar.",
+            "Berdoa dan luruskan niat untuk berbagi manfaat."
         ];
 
-        function ganti(key) {
-            // Update UI Menu
+        function nav(key) {
             document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
             document.getElementById('m-' + key).classList.add('active');
             
-            // Render Content
-            document.getElementById('render-materi').innerHTML = database[key];
-            
-            // Jika memilih tips, isi tips secara otomatis
             if(key === 'tips') {
-                let htmlTips = "";
-                listTips.forEach((t, i) => {
-                    htmlTips += `
-                        <div class="tip-card-simple">
-                            <div class="tip-number">${i+1}</div>
-                            <div style="font-size: 0.95rem;">${t}</div>
-                        </div>
-                    `;
+                let html = "<h2>50 Tips Cuan Kilat</h2><div class='tips-grid'>";
+                tips50.forEach((t, i) => {
+                    html += `<div class="tip-card-simple"><div class="tip-number">${i+1}</div><div style="font-size: 0.95rem; font-weight:500;">${t}</div></div>`;
                 });
-                document.getElementById('tips-container').innerHTML = htmlTips;
+                html += "</div>";
+                document.getElementById('render').innerHTML = html;
+            } else {
+                document.getElementById('render').innerHTML = dataMateri[key];
             }
             
-            // Auto-close sidebar on mobile
-            if(window.innerWidth < 768) {
-                document.getElementById('mySidebar').classList.add('closed');
-                document.getElementById('myMain').classList.add('expanded');
-            }
+            if(window.innerWidth < 768) toggleSide();
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
     </script>

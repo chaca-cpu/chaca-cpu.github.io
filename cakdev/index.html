@@ -1,1 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cakdevelop - Jasa Pembuatan Website Murah</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ================= RESET & VARIABEL ================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
+        :root {
+            --warna-biru: #0052cc;  /* Biru Solid */
+            --warna-putih: #ffffff; /* Putih Solid */
+            --warna-hitam: #111111; /* Hitam Teks */
+            --garis-tepi: #e2e8f0;  /* Garis Abu-abu tipis */
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--warna-hitam);
+            background-color: var(--warna-putih);
+            overflow-x: hidden;
+        }
+
+        /* ================= KELAS UTILITAS ================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        .section-padding { padding: 120px 0; }
+        .text-center { text-align: center; }
+
+        .bg-biru { background-color: var(--warna-biru); color: var(--warna-putih); }
+        .bg-putih { background-color: var(--warna-putih); color: var(--warna-hitam); }
+
+        /* ================= ANIMASI FADE UP ================= */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.muncul { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
+
+        /* ================= TIPOGRAFI ================= */
+        h1, h2, h3 { font-weight: 800; letter-spacing: -1px; }
+        h1 { font-size: 3.8rem; margin-bottom: 20px; line-height: 1.2; }
+        h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        h3 { font-size: 1.5rem; margin-bottom: 10px; transition: color 0.4s ease; }
+        p { margin-bottom: 20px; font-size: 1.05rem; transition: color 0.4s ease; }
+        
+        .bg-biru p { color: rgba(255, 255, 255, 0.9); }
+        .bg-putih p { color: #444444; }
+
+        /* ================= TOMBOL ================= */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            width: 100%;
+        }
+
+        .btn:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); }
+
+        .btn-putih { background-color: var(--warna-putih); color: var(--warna-biru); }
+        .btn-biru { background-color: var(--warna-biru); color: var(--warna-putih); }
+        
+        .btn-outline-putih { background-color: transparent; color: var(--warna-putih); border-color: var(--warna-putih); }
+        .btn-outline-putih:hover { background-color: var(--warna-putih); color: var(--warna-biru); }
+
+        .btn-outline-biru { background-color: transparent; color: var(--warna-biru); border-color: var(--warna-biru); }
+        .btn-outline-biru:hover { background-color: var(--warna-biru); color: var(--warna-putih); }
+
+        /* ================= NAVBAR PUTIH ================= */
+        .navbar {
+            background-color: var(--warna-putih);
+            border-bottom: 1px solid var(--garis-tepi);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.6rem; font-weight: 800; text-decoration: none; color: var(--warna-hitam); }
+        .logo span { color: var(--warna-biru); }
+        .nav-links a { text-decoration: none; color: var(--warna-hitam); margin-left: 32px; font-weight: 600; font-size: 0.95rem; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--warna-biru); }
+
+        /* ================= HERO SECTION ================= */
+        .hero-rectangular {
+            position: relative;
+            width: 100%; 
+            aspect-ratio: 4 / 2; /* Persegi Panjang di Desktop */
+            display: flex;
+            align-items: center; 
+            background-image: url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+
+        .hero-rectangular::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--warna-biru);
+            opacity: 0.75; 
+            z-index: 1;
+        }
+
+        .hero-rectangular .container {
+            position: relative;
+            z-index: 2;
+            color: var(--warna-putih);
+            max-width: 800px;
+            text-align: left; 
+            margin: 0 auto; 
+        }
+
+        .hero-rectangular h1 { color: var(--warna-putih); }
+        .hero-rectangular p { color: rgba(255, 255, 255, 0.9); font-size: 1.15rem; max-width: 700px; }
+        
+        .hero-rectangular .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: flex-start;
+            margin-top: 40px;
+        }
+        .hero-rectangular .btn { width: auto; }
+
+        /* ================= PAKET SECTION (DENGAN EFEK HOVER BIRU) ================= */
+        .grid-paket {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            align-items: stretch;
+            margin-top: 60px;
+        }
+
+        .kartu-paket {
+            background-color: var(--warna-putih);
+            border: 1px solid var(--garis-tepi);
+            border-radius: 12px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            transition: all 0.4s ease; /* Transisi halus untuk semua perubahan */
+            cursor: pointer;
+        }
+
+        .kartu-paket-highlight { border: 2px solid var(--warna-biru); position: relative; }
+        
+        .badge-populer {
+            position: absolute;
+            top: -15px; left: 40px;
+            background-color: var(--warna-biru);
+            color: var(--warna-putih);
+            padding: 6px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            transition: all 0.4s ease;
+        }
+
+        .harga {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--warna-hitam);
+            margin-bottom: 25px;
+            transition: color 0.4s ease;
+        }
+
+        .daftar-fitur {
+            list-style: none;
+            margin: 0 0 40px 0;
+            flex-grow: 1; 
+        }
+
+        .daftar-fitur li { margin-bottom: 16px; padding-left: 32px; position: relative; transition: color 0.4s ease;}
+        .daftar-fitur li::before {
+            content: "✓"; position: absolute; left: 0;
+            color: var(--warna-biru); font-weight: 800; font-size: 1.1rem;
+            transition: color 0.4s ease;
+        }
+
+        /* ----- MAGIC HOVER EFFECT: MENGUBAH SEMUA JADI BIRU & PUTIH ----- */
+        .kartu-paket:hover, .kartu-paket:active {
+            background-color: var(--warna-biru);
+            border-color: var(--warna-biru);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 82, 204, 0.2);
+        }
+
+        /* Teks dalam kartu menjadi putih saat di-hover */
+        .kartu-paket:hover h3, 
+        .kartu-paket:hover .harga,
+        .kartu-paket:hover .daftar-fitur li {
+            color: var(--warna-putih);
+        }
+
+        .kartu-paket:hover p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Centang daftar fitur jadi putih */
+        .kartu-paket:hover .daftar-fitur li::before {
+            color: var(--warna-putih);
+        }
+
+        /* Label Terlaris membalik warnanya */
+        .kartu-paket:hover .badge-populer {
+            background-color: var(--warna-putih);
+            color: var(--warna-biru);
+        }
+
+        /* Tombol menyesuaikan diri saat kartu biru */
+        .kartu-paket:hover .btn-outline-biru {
+            border-color: rgba(255,255,255,0.4);
+            color: var(--warna-putih);
+        }
+        .kartu-paket:hover .btn-outline-biru:hover {
+            border-color: var(--warna-putih);
+            background-color: rgba(255,255,255,0.1);
+        }
+        .kartu-paket:hover .btn-biru {
+            background-color: var(--warna-putih);
+            color: var(--warna-biru);
+        }
+        /* ------------------------------------------------------------- */
+
+        /* ================= TESTIMONI SECTION ================= */
+        .grid-testimoni {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .kartu-testimoni {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .bintang { color: #FFD700; margin-bottom: 15px; font-size: 1.2rem; }
+        .teks-testimoni { font-style: italic; margin-bottom: 20px; font-size: 1rem; }
+        .nama-klien { font-weight: 800; font-size: 1.1rem; }
+        .asal-klien { font-size: 0.9rem; color: rgba(255, 255, 255, 0.7); }
+
+        /* ================= SOSMED & KONTAK SECTION ================= */
+        .sosmed-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .icon-sosmed {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px; height: 60px;
+            background-color: var(--warna-putih);
+            color: var(--warna-hitam);
+            border: 2px solid var(--garis-tepi);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .icon-wa:hover { background-color: #25D366; color: var(--warna-putih); border-color: #25D366; transform: translateY(-5px); }
+        .icon-ig:hover { background-color: #E1306C; color: var(--warna-putih); border-color: #E1306C; transform: translateY(-5px); }
+        .icon-tiktok:hover { background-color: #000000; color: var(--warna-putih); border-color: #000000; transform: translateY(-5px); }
+
+        /* ================= FOOTER ================= */
+        .footer { text-align: center; padding: 30px 0; border-top: 1px solid var(--garis-tepi); font-size: 0.9rem; color: #666; }
+
+        /* ================= RESPONSIVE (MOBILE) ================= */
+        @media (max-width: 900px) {
+            .grid-paket, .grid-testimoni { grid-template-columns: 1fr; } /* Layout ke bawah */
+            
+            /* Perbaikan Khusus Hero untuk Mobile */
+            .hero-rectangular { 
+                aspect-ratio: auto; /* Cabut kunci rasio agar tinggi bisa bebas mengikuti teks */
+                min-height: 80vh; /* Pastikan minimal tingginya menutupi hampir layar HP */
+                padding: 100px 0; /* Memberi ruang luas di atas dan bawah agar teks bernapas */
+            }
+            .hero-rectangular h1 { 
+                font-size: 2.2rem; /* Ukuran H1 diperkecil untuk HP */
+                line-height: 1.3;
+            }
+            .hero-rectangular p {
+                font-size: 1rem;
+            }
+            
+            .hero-rectangular .btn-group { flex-direction: column; }
+            .hero-rectangular .btn { width: 100%; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar bg-putih">
+        <div class="container">
+            <a href="#" class="logo">Cakdevelop<span>.</span></a>
+            <div class="nav-links">
+                <a href="#">Beranda</a>
+                <a href="#paket">Layanan</a>
+                <a href="#testimoni">Testimoni</a>
+                <a href="#kontak">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-rectangular">
+        <div class="container fade-up">
+            <h1>Platform Web Terbaik Untuk Bisnis Anda.</h1>
+            <p>Kami merancang arsitektur website yang moderen, ringan, cepat dimuat, dan murah. Solusi tepat dari portofolio pelajar hingga pelaku bisnis.</p>
+            <div class="btn-group">
+                <a href="#paket" class="btn btn-putih">Lihat Paket Harga</a>
+                <a href="#kontak" class="btn btn-outline-putih">Hubungi Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="paket" class="section-padding bg-putih">
+        <div class="container">
+            <div class="text-center fade-up">
+                <h2>Pilihan Layanan Digital</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Skema harga transparan tanpa biaya tersembunyi. Pilih spesifikasi yang paling sesuai dengan kebutuhan Anda.</p>
+            </div>
+
+            <div class="grid-paket">
+                <div class="kartu-paket fade-up delay-1" onclick="pesanWA('Tugas/Pelajar')">
+                    <h3>Tugas / Pelajar</h3>
+                    <p style="min-height: 48px;">Website statis/dinamis sederhana untuk tugas akademik atau portofolio pribadi.</p>
+                    <div class="harga">Rp 50<span style="font-size: 1.2rem;">.000</span></div>
+                    <ul class="daftar-fitur">
+                        <li>2 Halaman Utama Clean</li>
+                        <li>Desain Responsif (HP & PC)</li>
+                        <li>Gratis Domain</li>
+                        <li>Revisi 1 Kali</li>
+                    </ul>
+                    <button class="btn btn-outline-biru">Pilih Paket Ini</button>
+                </div>
+
+                <div class="kartu-paket kartu-paket-highlight fade-up delay-2" onclick="pesanWA('UMKM & Bisnis')">
+                    <div class="badge-populer">TERLARIS</div>
+                    <h3>UMKM & Bisnis</h3>
+                    <p style="min-height: 48px;">Tingkatkan kredibilitas dengan website profil perusahaan resmi.</p>
+                    <div class="harga">Rp 100<span style="font-size: 1.2rem;"> 000</span></div>
+                    <ul class="daftar-fitur">
+                        <li>Hingga 3 Halaman Detail</li>
+                        <li>Desain Responsif (HP & PC)</li>
+                        <li>Intergrasi WhatsApp</li>
+                        <li>Katalog / Daftar Layanan</li>
+                        <li>Revisi 3 Kali</li>
+                    </ul>
+                    <button class="btn btn-biru">Pilih Paket Ini</button>
+                </div>
+
+                <div class="kartu-paket fade-up delay-3" onclick="pesanWA('Sistem Custom')">
+                    <h3>Paket Murah</h3>
+                    <p style="min-height: 48px;">Custom ataupun sistem informasi lengkap dengan fitur fitur khusus.</p>
+                    <div class="harga">Rp 350<span style="font-size: 1.2rem;"> 000</span></div>
+                    <ul class="daftar-fitur">
+                        <li>Hingga 4 Halaman</li>
+                        <li>Dashboard Admin Pribadi</li>
+                        <li>Fitur Katalog / Daftar Layanan</li>
+                        <li>Keamanan SSL Gratis (3 Bulan)</li>
+                        <li>Revisi 5 Kali</li>
+                        <li>Gratis Domain .com (1 Tahun)</li>
+                    </ul>
+                    <button class="btn btn-outline-biru">Konsultasi Dulu</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="section-padding bg-biru">
+        <div class="container fade-up">
+            <h2 class="text-center">Apa Kata Klien Kami?</h2>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto;">Kami bangga telah membantu puluhan bisnis dan individu mencapai tujuan digital mereka.</p>
+            
+            <div class="grid-testimoni">
+                <div class="kartu-testimoni fade-up delay-1">
+                    <div class="bintang">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="teks-testimoni">"Sangat puas dengan hasilnya! Website toko online saya jadi sangat cepat saat dibuka, pelanggan saya juga bilang tampilannya sangat profesional."</p>
+                    <div class="nama-klien">Budi Santoso</div>
+                    <div class="asal-klien">Pemilik UMKM Kopi Susu</div>
+                </div>
+
+                <div class="kartu-testimoni fade-up delay-2">
+                    <div class="bintang">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="teks-testimoni">"Desainnya bersih dan simple. Cakdevelop sangat sabar melayani revisi dan memberikan saran yang sangat membantu bisnis kami."</p>
+                    <div class="nama-klien">Andi Wirawan</div>
+                    <div class="asal-klien">Illustrator</div>
+                </div>
+
+                <div class="kartu-testimoni fade-up delay-3">
+                    <div class="bintang">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="teks-testimoni">"Tugas akhir saya beres tanpa pusing! Kode yang ditulis sangat rapi jadi mudah saya pelajari lagi. Harga sangat bersahabat untuk kantong pelajar."</p>
+                    <div class="nama-klien">Sarah Amalia</div>
+                    <div class="asal-klien">Pelajar SMK</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="section-padding bg-putih text-center">
+        <div class="container fade-up">
+            <h2>Mari Terhubung</h2>
+            <p style="max-width: 500px; margin: 0 auto;">Punya pertanyaan spesifik atau ingin sekadar melihat portofolio kami? Hubungi kami melalui jalur favorit Anda di bawah ini.</p>
+            
+            <div class="sosmed-container fade-up delay-1">
+                <a href="https://wa.me/62857312617287" target="_blank" class="icon-sosmed icon-wa" title="Hubungi via WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://instagram.com/Cakdevelop" target="_blank" class="icon-sosmed icon-ig" title="Ikuti di Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://tiktok.com/" target="_blank" class="icon-sosmed icon-tiktok" title="Lihat di TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-putih">
+        <div class="container">
+            <p>&copy; 2026 Cakdevelop. Dibangun dengan kepercayaan.</p>
+        </div>
+    </footer>
+
+      <script>
+        function pesanWA(namaPaket) {
+            const nomorWA = "62857312617287";
+            const teksPesan = `Halo! Saya tertarik dengan Paket Pembuatan Website: *${namaPaket}*. Bisa diinformasikan proses selanjutnya?`;
+            const urlWA = `https://wa.me/${nomorWA}?text=${encodeURIComponent(teksPesan)}`;
+            window.open(urlWA, '_blank');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('muncul');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-up');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
